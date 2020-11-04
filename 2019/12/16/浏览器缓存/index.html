@@ -198,7 +198,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.3k</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -223,7 +223,7 @@
 <li>Cookie起源: HTTP协议是一个无状态协议，客户端向服务器发送请求，服务器返回响应。但是，服务器无法知道两个请求是否来自于同一个浏览器。</li>
 <li>Cookie是什么: cookie是浏览器储存在用户电脑上的的一个很小的文本文件,纯文本格式,在浏览器中以键值对的形式储存在。可在开发者面板Application中找到。</li>
 <li><p>使用JavaScript创建Cookie</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie = &quot;username=Jay&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">document.cookie</span> = <span class="string">"username=Jay"</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>缺点：</p>
 <ol>
@@ -253,20 +253,20 @@
 <ol>
 <li>保存数据：<code>localStorage.setItem(&quot;username&quot;, &quot;Jay&quot;);</code></li>
 <li><p>读取数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(localStorage.getItem(&quot;username&quot;)); // Jay </span><br><span class="line">console.log(localStorage[&quot;username&quot;]); // Jay </span><br><span class="line">console.log(localStorage.username); // Jay</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>(localStorage.getItem(<span class="string">"username"</span>)); <span class="comment">// Jay </span></span><br><span class="line">console.<span class="built_in">log</span>(localStorage[<span class="string">"username"</span>]); <span class="comment">// Jay </span></span><br><span class="line">console.<span class="built_in">log</span>(localStorage.username); <span class="comment">// Jay</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>删除数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">localStorage.removeItem(&quot;username&quot;); // 针对某个键值对的删除</span><br><span class="line">localStorage.clear(); // 删除localStorage的所有内容</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">localStorage</span><span class="selector-class">.removeItem</span>(<span class="string">"username"</span>); <span class="comment">// 针对某个键值对的删除</span></span><br><span class="line"><span class="selector-tag">localStorage</span><span class="selector-class">.clear</span>(); <span class="comment">// 删除localStorage的所有内容</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>localStorage 键的获取</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for(let i=0; i&lt;localStorage.length; i++) &#123;</span><br><span class="line">  let key = localStorage.key(i);</span><br><span class="line">  console.log(key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i=<span class="number">0</span>; i&lt;localStorage.<span class="built_in">length</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">let</span> <span class="built_in">key</span> = localStorage.<span class="built_in">key</span>(i);</span><br><span class="line">  console.<span class="built_in">log</span>(<span class="built_in">key</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <blockquote>
 <p>localStorage 存储的是字符串形式。<br>当我们需要把一个对象存入localStorage, 可以使用JSON.stringify()。</p>
 </blockquote>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123; name: &quot;Jay&quot;, age: 18 &#125;;</span><br><span class="line">localStorage.setItem(&quot;username&quot;, &quot;Jay&quot;); </span><br><span class="line">localStorage.setItem(&quot;info&quot;, JSON.stringify(obj));</span><br></pre></td></tr></table></figure>
-<p>使用JSON.parse()解析localStorage数据成对象。<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let name = localStorage.getItem(&quot;username&quot;);</span><br><span class="line">let info = JSON.parse(localStorage.getItem(&quot;info&quot;));</span><br></pre></td></tr></table></figure></p>
+  <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; name: <span class="string">"Jay"</span>, age: <span class="number">18</span> &#125;;</span><br><span class="line">localStorage.set<span class="constructor">Item(<span class="string">"username"</span>, <span class="string">"Jay"</span>)</span>; </span><br><span class="line">localStorage.set<span class="constructor">Item(<span class="string">"info"</span>, JSON.<span class="params">stringify</span>(<span class="params">obj</span>)</span>);</span><br></pre></td></tr></table></figure>
+<p>使用JSON.parse()解析localStorage数据成对象。<br>  <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = localStorage.get<span class="constructor">Item(<span class="string">"username"</span>)</span>;</span><br><span class="line"><span class="keyword">let</span> info = <span class="module-access"><span class="module"><span class="identifier">JSON</span>.</span></span>parse(localStorage.get<span class="constructor">Item(<span class="string">"info"</span>)</span>);</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -384,7 +384,7 @@
         <a href="https://github.com/cancc" title="GitHub → https://github.com/cancc" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="http://www.jianshu.com/u/0507470a5de9" title="JianShu → http://www.jianshu.com/u/0507470a5de9" rel="noopener" target="_blank"><i class="fab fa-jianshu fa-fw"></i>JianShu</a>
+        <a href="http://www.jianshu.com/u/0507470a5de9" title="JianShu → http://www.jianshu.com/u/0507470a5de9" rel="noopener" target="_blank"><i class="fab fa-angellist fa-fw"></i>JianShu</a>
       </span>
   </div>
 
@@ -418,12 +418,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">9k</span>
+    <span title="Symbols count total">8k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">8 mins.</span>
+    <span title="Reading time total">7 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
