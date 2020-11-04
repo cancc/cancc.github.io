@@ -186,10 +186,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-12-23 10:28:29 / Modified: 10:29:21" itemprop="dateCreated datePublished" datetime="2019-12-23T10:28:29+08:00">2019-12-23</time>
+              <time title="Created: 2019-12-23 10:28:29" itemprop="dateCreated datePublished" datetime="2019-12-23T10:28:29+08:00">2019-12-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-11-05 01:31:05" itemprop="dateModified" datetime="2020-11-05T01:31:05+08:00">2020-11-05</time>
+              </span>
 
           <br>
             <span class="post-meta-item" title="Symbols count in article">
@@ -218,14 +224,14 @@
       
           <figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let furits = [<span class="string">'banana'</span>, <span class="string">'apple'</span>, <span class="string">'peach'</span>];</span><br><span class="line">console<span class="meta">.log(</span>furits.<span class="meta">length</span>); // 3</span><br><span class="line">furits[5]= <span class="string">'mango'</span>;</span><br><span class="line">console<span class="meta">.log(</span>furits.<span class="meta">length</span>); // 6</span><br><span class="line">console<span class="meta">.log(</span>furits); // [<span class="string">"banana"</span>, <span class="string">"apple"</span>, <span class="string">"peach"</span>, empty × 2, <span class="string">"mango"</span>]  <span class="comment">*chrome浏览器</span></span><br><span class="line"><span class="comment">console.log(furits[3]);</span> // undefined  <span class="comment">*chrome浏览器</span></span><br><span class="line"><span class="comment">console.log(Object.keys(furits));</span> // [<span class="string">"0"</span>, <span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"5"</span>]</span><br></pre></td></tr></table></figure>
 <p>设置数组长度不可编辑。<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(furits, <span class="string">'length'</span>, &#123;</span><br><span class="line">  <span class="symbol">value:</span><span class="number">2</span>, <span class="regexp">//</span> 值</span><br><span class="line">  <span class="symbol">writable:</span> <span class="keyword">false</span>, <span class="regexp">//</span> 不可修改</span><br><span class="line">  <span class="symbol">configurable:</span> <span class="keyword">false</span>, <span class="regexp">//</span> 不可删除</span><br><span class="line">&#125;)</span><br><span class="line">console.log(furits); <span class="regexp">//</span> [<span class="string">"banana"</span>, <span class="string">"apple"</span>]</span><br><span class="line">furits.push(<span class="string">'apple2'</span>); <span class="regexp">//</span> Uncaught TypeError</span><br><span class="line">console.log(furits); <span class="regexp">//</span> [<span class="string">"banana"</span>, <span class="string">"apple"</span>]</span><br></pre></td></tr></table></figure></p>
-<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><blockquote>
-<h3 id="computed"><a href="#computed" class="headerlink" title="computed"></a>computed</h3><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h4</span>&gt;</span></span><span class="template-variable">&#123;&#123;msg&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"msg1"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"确定"</span> @<span class="attr">click</span>=<span class="string">"changeValue"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!-- computed --&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h4</span>&gt;</span></span><span class="template-variable">&#123;&#123;computedMsg&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">export default &#123;</span></span><br><span class="line"><span class="xml">  data() &#123;</span></span><br><span class="line"><span class="xml">    return &#123;</span></span><br><span class="line"><span class="xml">      msg: "Hello, China!",</span></span><br><span class="line"><span class="xml">      msg1: ''</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">  &#125;,</span></span><br><span class="line"><span class="xml">  computed: &#123;</span></span><br><span class="line"><span class="xml">    computedMsg: function() &#123;</span></span><br><span class="line"><span class="xml">      return this.msg.split('').reverse().join()</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">  &#125;,</span></span><br><span class="line"><span class="xml">  watch: &#123;</span></span><br><span class="line"><span class="xml">    msg: function(val, oldVal) &#123;</span></span><br><span class="line"><span class="xml">      // newVal: abcdefg---oldVal: Hello, China!</span></span><br><span class="line"><span class="xml">      console.log(`newVal: $&#123;val&#125;---oldVal: $&#123;oldVal&#125;`);</span></span><br><span class="line"><span class="xml">      // g,f,e,d,c,b,a</span></span><br><span class="line"><span class="xml">      console.log(this.computedMsg);</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">  &#125;,</span></span><br><span class="line"><span class="xml">  methods: &#123;</span></span><br><span class="line"><span class="xml">    changeValue() &#123;</span></span><br><span class="line"><span class="xml">      this.msg = this.msg1;</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">  &#125;,</span></span><br><span class="line"></span><br><span class="line"><span class="xml">  mounted() &#123;</span></span><br><span class="line"><span class="xml">    // this.msg = "hello, china"</span></span><br><span class="line"><span class="xml">  &#125;,</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><strong>计算属性是基于它们的响应式依赖进行缓存的</strong>。只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要 msg 还没有发生改变，多次访问 computedMsg 计算属性会立即返回之前的计算结果，而不必再次执行函数。</p>
-<blockquote>
-<h3 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h3></blockquote>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h4</span>&gt;</span></span><span class="template-variable">&#123;&#123;msg&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"msg1"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"确定"</span> @<span class="attr">click</span>=<span class="string">"changeValue"</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">export default &#123;</span></span><br><span class="line"><span class="xml">  data() &#123;</span></span><br><span class="line"><span class="xml">    return &#123;</span></span><br><span class="line"><span class="xml">      msg: "Hello, China!",</span></span><br><span class="line"><span class="xml">      msg1: ''</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">  &#125;,</span></span><br><span class="line"><span class="xml">  watch: &#123;</span></span><br><span class="line"><span class="xml">    // newVal: hello, world---oldVal: Hello, China!</span></span><br><span class="line"><span class="xml">    msg: function(val, oldVal) &#123; </span></span><br><span class="line"><span class="xml">      console.log(`newVal: $&#123;val&#125;---oldVal: $&#123;oldVal&#125;`);</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">  &#125;,</span></span><br><span class="line"><span class="xml">  methods: &#123;</span></span><br><span class="line"><span class="xml">    changeValue() &#123;</span></span><br><span class="line"><span class="xml">      this.msg = this.msg1;</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">  &#125;,</span></span><br><span class="line"><span class="xml">  mounted() &#123;</span></span><br><span class="line"></span><br><span class="line"><span class="xml">  &#125;,</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/12/23/Vue计算和监听/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -610,7 +616,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://www.chencheng.life/2018/05/14/a/">
+    <link itemprop="mainEntityOfPage" href="http://www.chencheng.life/2018/05/14/music/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/author.jpg">
@@ -624,7 +630,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/05/14/a/" class="post-title-link" itemprop="url">vue-music测试</a>
+            <a href="/2018/05/14/music/" class="post-title-link" itemprop="url">vue-music测试</a>
         </h2>
 
         <div class="post-meta">
@@ -641,7 +647,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-06-20 22:53:26" itemprop="dateModified" datetime="2018-06-20T22:53:26+08:00">2018-06-20</time>
+                <time title="Modified: 2018-06-17 10:17:02" itemprop="dateModified" datetime="2018-06-17T10:17:02+08:00">2018-06-17</time>
               </span>
 
           <br>
@@ -688,7 +694,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://www.chencheng.life/2018/05/14/music/">
+    <link itemprop="mainEntityOfPage" href="http://www.chencheng.life/2018/05/14/a/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/author.jpg">
@@ -702,7 +708,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/05/14/music/" class="post-title-link" itemprop="url">vue-music测试</a>
+            <a href="/2018/05/14/a/" class="post-title-link" itemprop="url">vue-music测试</a>
         </h2>
 
         <div class="post-meta">
@@ -719,7 +725,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-06-17 10:17:02" itemprop="dateModified" datetime="2018-06-17T10:17:02+08:00">2018-06-17</time>
+                <time title="Modified: 2018-06-20 22:53:26" itemprop="dateModified" datetime="2018-06-20T22:53:26+08:00">2018-06-20</time>
               </span>
 
           <br>
