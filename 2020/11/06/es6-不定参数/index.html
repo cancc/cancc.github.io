@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"www.chencheng.life","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"b2t":true,"scrollpercent":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="乏善可陈 百事可乐。">
+  <meta name="description" content="ES5 中的不具名参数 arguments 包含所有的参数，未知的参数可能会从第2，3… 开始1234567891011121314151617function pick(object) &amp;#123;  let result = Object.create(null);  // 遍历arguments, 从第二个参数开始处理  for(let i = 1, len = arguments.leng">
+<meta name="keywords" content="ES6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="类数组">
-<meta property="og:url" content="http://www.chencheng.life/2019/12/05/类数组/index.html">
+<meta property="og:title" content="ES6--函数">
+<meta property="og:url" content="http://www.chencheng.life/2020/11/06/es6-不定参数/index.html">
 <meta property="og:site_name" content="Chen">
-<meta property="og:description" content="乏善可陈 百事可乐。">
+<meta property="og:description" content="ES5 中的不具名参数 arguments 包含所有的参数，未知的参数可能会从第2，3… 开始1234567891011121314151617function pick(object) &amp;#123;  let result = Object.create(null);  // 遍历arguments, 从第二个参数开始处理  for(let i = 1, len = arguments.leng">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-05T04:38:25.270Z">
+<meta property="og:updated_time" content="2020-11-09T06:10:41.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="类数组">
-<meta name="twitter:description" content="乏善可陈 百事可乐。">
+<meta name="twitter:title" content="ES6--函数">
+<meta name="twitter:description" content="ES5 中的不具名参数 arguments 包含所有的参数，未知的参数可能会从第2，3… 开始1234567891011121314151617function pick(object) &amp;#123;  let result = Object.create(null);  // 遍历arguments, 从第二个参数开始处理  for(let i = 1, len = arguments.leng">
 
-<link rel="canonical" href="http://www.chencheng.life/2019/12/05/类数组/">
+<link rel="canonical" href="http://www.chencheng.life/2020/11/06/es6-不定参数/">
 
 
 <script id="page-configurations">
@@ -45,7 +46,7 @@
   };
 </script>
 
-  <title>类数组 | Chen</title>
+  <title>ES6--函数 | Chen</title>
   
 
 
@@ -162,7 +163,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.chencheng.life/2019/12/05/类数组/">
+    <link itemprop="mainEntityOfPage" href="http://www.chencheng.life/2020/11/06/es6-不定参数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/author.jpg">
@@ -175,7 +176,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          类数组
+          ES6--函数
         </h1>
 
         <div class="post-meta">
@@ -185,8 +186,15 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-05 12:38:25" itemprop="dateCreated datePublished" datetime="2019-12-05T12:38:25+08:00">2019-12-05</time>
+              <time title="创建时间：2020-11-06 02:04:35" itemprop="dateCreated datePublished" datetime="2020-11-06T02:04:35+08:00">2020-11-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-09 14:10:41" itemprop="dateModified" datetime="2020-11-09T14:10:41+08:00">2020-11-09</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -200,7 +208,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>0</span>
+              <span>794</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -218,7 +226,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h3 id="ES5-中的不具名参数"><a href="#ES5-中的不具名参数" class="headerlink" title="ES5 中的不具名参数"></a>ES5 中的不具名参数</h3><ol>
+<li>arguments 包含所有的参数，未知的参数可能会从第2，3… 开始<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pick</span>(<span class="params">object</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</span><br><span class="line">  <span class="comment">// 遍历arguments, 从第二个参数开始处理</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>, len = <span class="built_in">arguments</span>.length; i &lt; len; i++) &#123;</span><br><span class="line">    result[<span class="built_in">arguments</span>[i]] = object[<span class="built_in">arguments</span>[i]];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> book = &#123;</span><br><span class="line">  title: <span class="string">"Understanding ES6"</span>,</span><br><span class="line">  author: <span class="string">"Nicholas C.Zakas"</span>,</span><br><span class="line">  year： <span class="number">2018</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> bookData = pick(book, <span class="string">"author"</span>, <span class="string">"year"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(bookData); <span class="comment">// &#123;author: "Nicholas C.Zakas", year: 2018&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="剩余参数"><a href="#剩余参数" class="headerlink" title="剩余参数"></a>剩余参数</h3><ol start="2">
+<li>keys 是一个包含所有在 object 之后的参数的剩余参数（这与包含所有参数arguments 不同，后者会连第一个参数都包含在内）<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pick</span><span class="params">(object, <span class="rest_arg">...keys</span>)</span> </span>&#123; <span class="comment">// ...表示不定参数</span></span><br><span class="line">  let result = Object.create(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">for</span>(let i = <span class="number">0</span>, len = keys.length, i &lt; len, i++&gt;) &#123;</span><br><span class="line">    result[key[i]] = object[keys[i]];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h3><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let values = [<span class="number">-25</span>, <span class="number">-50</span>, <span class="number">-75</span>, <span class="number">-100</span>];</span><br><span class="line">console.log(Math.max(...values, <span class="number">0</span>)); <span class="comment">// 0 避免返回小于0的值</span></span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -233,7 +250,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.chencheng.life/2019/12/05/类数组/" title="类数组">http://www.chencheng.life/2019/12/05/类数组/</a>
+    <a href="http://www.chencheng.life/2020/11/06/es6-不定参数/" title="ES6--函数">http://www.chencheng.life/2020/11/06/es6-不定参数/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -243,6 +260,9 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ES6/" rel="tag"><i class="fa fa-tag"></i> ES6</a>
+          </div>
 
         
 
@@ -250,12 +270,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/05/My-Gallery/" rel="prev" title="My Gallery">
-      <i class="fa fa-chevron-left"></i> My Gallery
+    <a href="/2019/12/23/Vue计算和监听/" rel="prev" title="Vue计算和监听">
+      <i class="fa fa-chevron-left"></i> Vue计算和监听
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/12/16/浏览器缓存/" rel="next" title="浏览器缓存">
-      浏览器缓存 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/11/12/TypeScript-01/" rel="next" title="TypeScript_01">
+      TypeScript_01 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -315,6 +335,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ES5-中的不具名参数"><span class="nav-number">1.</span> <span class="nav-text">ES5 中的不具名参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剩余参数"><span class="nav-number">2.</span> <span class="nav-text">剩余参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展运算符"><span class="nav-number">3.</span> <span class="nav-text">扩展运算符</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
