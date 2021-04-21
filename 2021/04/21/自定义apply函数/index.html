@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"www.chencheng.life","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"b2t":true,"scrollpercent":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="乏善可陈 百事可乐。">
+  <meta name="description" content="Function.prototype.apply() apply()方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。 mdn call函数    自定义apply() 函数 1234567891011// apply.jsfunction apply(fn, obj, args) &amp;#123; // args --&amp;gt; 数组	// 严格模式 ES2020">
+<meta name="keywords" content="自定义js函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="类数组">
-<meta property="og:url" content="http://www.chencheng.life/2019/12/05/类数组/index.html">
+<meta property="og:title" content="自定义apply函数">
+<meta property="og:url" content="http://www.chencheng.life/2021/04/21/自定义apply函数/index.html">
 <meta property="og:site_name" content="Chen">
-<meta property="og:description" content="乏善可陈 百事可乐。">
+<meta property="og:description" content="Function.prototype.apply() apply()方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。 mdn call函数    自定义apply() 函数 1234567891011// apply.jsfunction apply(fn, obj, args) &amp;#123; // args --&amp;gt; 数组	// 严格模式 ES2020">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-05T04:38:25.270Z">
+<meta property="og:updated_time" content="2021-04-21T15:28:02.087Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="类数组">
-<meta name="twitter:description" content="乏善可陈 百事可乐。">
+<meta name="twitter:title" content="自定义apply函数">
+<meta name="twitter:description" content="Function.prototype.apply() apply()方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。 mdn call函数    自定义apply() 函数 1234567891011// apply.jsfunction apply(fn, obj, args) &amp;#123; // args --&amp;gt; 数组	// 严格模式 ES2020">
 
-<link rel="canonical" href="http://www.chencheng.life/2019/12/05/类数组/">
+<link rel="canonical" href="http://www.chencheng.life/2021/04/21/自定义apply函数/">
 
 
 <script id="page-configurations">
@@ -45,7 +46,7 @@
   };
 </script>
 
-  <title>类数组 | Chen</title>
+  <title>自定义apply函数 | Chen</title>
   
 
 
@@ -162,7 +163,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.chencheng.life/2019/12/05/类数组/">
+    <link itemprop="mainEntityOfPage" href="http://www.chencheng.life/2021/04/21/自定义apply函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/author.jpg">
@@ -175,7 +176,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          类数组
+          自定义apply函数
         </h1>
 
         <div class="post-meta">
@@ -184,8 +185,18 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-12-05 12:38:25" itemprop="dateCreated datePublished" datetime="2019-12-05T12:38:25+08:00">2019-12-05</time>
+              <time title="创建时间：2021-04-21 23:26:24 / 修改时间：23:28:02" itemprop="dateCreated datePublished" datetime="2021-04-21T23:26:24+08:00">2021-04-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自定义js函数/" itemprop="url" rel="index"><span itemprop="name">自定义js函数</span></a>
+                </span>
             </span>
 
           
@@ -200,7 +211,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>0</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -218,7 +229,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <blockquote>
+<h3 id="Function-prototype-apply"><a href="#Function-prototype-apply" class="headerlink" title="Function.prototype.apply()"></a>Function.prototype.apply()</h3><ul>
+<li><code>apply()</code>方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="noopener">mdn call函数</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<h3 id="自定义apply-函数"><a href="#自定义apply-函数" class="headerlink" title="自定义apply() 函数"></a>自定义apply() 函数</h3></blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// apply.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">apply</span>(<span class="params">fn, obj, args</span>) </span>&#123; <span class="comment">// args --&gt; 数组</span></span><br><span class="line">	<span class="comment">// 严格模式 ES2020标准 globalThis 提供了一个标准的方式来获取不同环境下的全局 this  对象（也就是全局对象自身）</span></span><br><span class="line">	<span class="keyword">if</span>(obj === <span class="literal">undefined</span> || obj === <span class="literal">null</span>) &#123;</span><br><span class="line">		obj = globalThis;</span><br><span class="line">	&#125;</span><br><span class="line">	obj.temp = fn;</span><br><span class="line">	<span class="keyword">let</span> res = obj.temp(...args); <span class="comment">// 扩展运算符</span></span><br><span class="line">	<span class="keyword">delete</span> obj.temp;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// index.html</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'./apply.js'</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">	<span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a, b)</span> </span>&#123; <span class="comment">// 声明函数</span></span></span><br><span class="line"><span class="javascript">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">return</span> a + b + <span class="keyword">this</span>.c;</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="javascript">	<span class="keyword">let</span> obj = &#123; <span class="comment">// 声明对象</span></span></span><br><span class="line">		c: 100,</span><br><span class="line">	&#125;</span><br><span class="line"><span class="actionscript">	<span class="comment">// 全局</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">window</span>.c = <span class="number">200</span>;</span></span><br><span class="line"><span class="actionscript">	<span class="comment">// 执行函数</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(add(<span class="number">100</span>, <span class="number">100</span>)); <span class="comment">// 400 this --&gt; window</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(apply(add, obj, [<span class="number">100</span>, <span class="number">100</span>])); <span class="comment">// 300 this --&gt; obj</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(apply(add, <span class="literal">null</span>, [<span class="number">100</span>, <span class="number">100</span>])); <span class="comment">// 400 this --&gt; window</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(apply(add, <span class="literal">undefined</span>, [<span class="number">100</span>, <span class="number">100</span>])); <span class="comment">// 400 this --&gt; window</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>补充 扩展运算符</p>
+<ul>
+<li>可以在函数调用/数组构造时, 将数组表达式或者string在语法层面展开；还        可以在构造字面量对象时, 将对象表达式按key-value的方式展开。(译者        注: 字面量一般指 [1, 2, 3] 或者 {name: “mdn”} 这种简洁的构造方式)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x, y, z</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> x + y + z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sum(...numbers));</span><br><span class="line"><span class="comment">// expected output: 6</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>复制数组<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> <span class="built_in">len</span> = items.length;</span><br><span class="line"><span class="keyword">const</span> itemsCopy = [];</span><br><span class="line">let i;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="built_in">len</span>; i++) &#123;</span><br><span class="line">  itemsCopy[i] = items[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> itemsCopy = [...items];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
     </div>
 
     
@@ -233,7 +265,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.chencheng.life/2019/12/05/类数组/" title="类数组">http://www.chencheng.life/2019/12/05/类数组/</a>
+    <a href="http://www.chencheng.life/2021/04/21/自定义apply函数/" title="自定义apply函数">http://www.chencheng.life/2021/04/21/自定义apply函数/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -243,6 +275,9 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/自定义js函数/" rel="tag"><i class="fa fa-tag"></i> 自定义js函数</a>
+          </div>
 
         
 
@@ -250,13 +285,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/05/My-Gallery/" rel="prev" title="My Gallery">
-      <i class="fa fa-chevron-left"></i> My Gallery
+    <a href="/2021/04/21/自定义call函数/" rel="prev" title="自定义call()函数">
+      <i class="fa fa-chevron-left"></i> 自定义call()函数
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2019/12/16/浏览器缓存/" rel="next" title="浏览器缓存">
-      浏览器缓存 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -315,6 +347,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-prototype-apply"><span class="nav-number">1.</span> <span class="nav-text">Function.prototype.apply()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义apply-函数"><span class="nav-number">2.</span> <span class="nav-text">自定义apply() 函数</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
