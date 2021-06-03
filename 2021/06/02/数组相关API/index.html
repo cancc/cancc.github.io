@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.chencheng.life","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"b2t":true,"scrollpercent":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="12345678// 1、map() 方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。function map(array, callback) &amp;#123;  const arr = [];  for(let index = 0; index &amp;lt; array.length; index++) &amp;#123;    arr.push(callback(array[">
+<meta name="keywords" content="自定义js函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组相关API">
+<meta property="og:url" content="http://www.chencheng.life/2021/06/02/数组相关API/index.html">
+<meta property="og:site_name" content="Chen">
+<meta property="og:description" content="12345678// 1、map() 方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。function map(array, callback) &amp;#123;  const arr = [];  for(let index = 0; index &amp;lt; array.length; index++) &amp;#123;    arr.push(callback(array[">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-06-02T13:38:09.543Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数组相关API">
+<meta name="twitter:description" content="12345678// 1、map() 方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。function map(array, callback) &amp;#123;  const arr = [];  for(let index = 0; index &amp;lt; array.length; index++) &amp;#123;    arr.push(callback(array[">
+
+<link rel="canonical" href="http://www.chencheng.life/2021/06/02/数组相关API/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数组相关API | Chen</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Chen</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">18</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.chencheng.life/2021/06/02/数组相关API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="Chen">
+      <meta itemprop="description" content="乏善可陈 百事可乐。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数组相关API
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-02 23:33:08 / 修改时间：21:38:09" itemprop="dateCreated datePublished" datetime="2021-06-02T23:33:08+08:00">2021-06-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自定义js函数/" itemprop="url" rel="index"><span itemprop="name">自定义js函数</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>2.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 1、map() 方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。</span><br><span class="line">function map(array, callback) &#123;</span><br><span class="line">  const arr = [];</span><br><span class="line">  for(let <span class="keyword">index</span> = <span class="number">0</span>; <span class="keyword">index</span> &lt; <span class="keyword">array</span>.<span class="built_in">length</span>; <span class="keyword">index</span>++) &#123;</span><br><span class="line">    arr.push(callback(<span class="keyword">array</span>[<span class="keyword">index</span>], <span class="keyword">index</span>));</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// <span class="number">2</span>、<span class="keyword">filter</span>() 方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。</span><br><span class="line"><span class="keyword">function</span> <span class="keyword">filter</span>(<span class="keyword">array</span>, callback) &#123;</span><br><span class="line">  const arr = [];</span><br><span class="line">  <span class="keyword">for</span>(let <span class="keyword">index</span> = <span class="number">0</span>; <span class="keyword">index</span> &lt; <span class="keyword">array</span>.length; <span class="keyword">index</span>++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(callback(<span class="keyword">array</span>[<span class="keyword">index</span>], <span class="keyword">index</span>)) &#123;</span><br><span class="line">      arr.push(<span class="keyword">array</span>[<span class="keyword">index</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 3、find() 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。</span><br><span class="line">function find(array, callback) &#123;</span><br><span class="line">  for(let <span class="keyword">index</span> = <span class="number">0</span>; <span class="keyword">index</span> &lt; <span class="keyword">array</span>.<span class="built_in">length</span>; <span class="keyword">index</span>++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(callback(<span class="keyword">array</span>[<span class="keyword">index</span>], <span class="keyword">index</span>)) &#123;</span><br><span class="line">      console.<span class="built_in">log</span>(<span class="string">"test find index===&gt;&gt;&gt;"</span>, <span class="keyword">index</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">array</span>[<span class="keyword">index</span>];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 4、findIndex()方法返回数组中满足提供的测试函数的第一个元素的索引。若没有找到对应元素则返回-1。</span><br><span class="line">function findIndex(array, callback) &#123;</span><br><span class="line">  for(let <span class="keyword">index</span> = <span class="number">0</span>; <span class="keyword">index</span> &lt; <span class="keyword">array</span>.<span class="built_in">length</span>; <span class="keyword">index</span>++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(callback(<span class="keyword">array</span>[<span class="keyword">index</span>], <span class="keyword">index</span>)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">index</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// <span class="number">5</span>、every() 方法测试一个数组内的所有元素是否都能通过某个指定函数的测试。它返回一个布尔值。</span><br><span class="line"><span class="keyword">function</span> every(<span class="keyword">array</span>, callback) &#123;</span><br><span class="line">  <span class="keyword">for</span>(let <span class="keyword">index</span> = <span class="number">0</span>; <span class="keyword">index</span> &lt; <span class="keyword">array</span>.length; <span class="keyword">index</span>++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!callback(<span class="keyword">array</span>[<span class="keyword">index</span>], <span class="keyword">index</span>)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// <span class="number">6</span>、<span class="keyword">some</span>() 方法测试数组中是不是至少有<span class="number">1</span>个元素通过了被提供的函数测试。它返回的是一个<span class="type">Boolean</span>类型的值。</span><br><span class="line">// (有一个符合就返回值<span class="keyword">true</span>，不再继续遍历。否则返回<span class="keyword">false</span>)</span><br><span class="line"><span class="keyword">function</span> <span class="keyword">some</span>(<span class="keyword">array</span>, callback) &#123;</span><br><span class="line">  <span class="keyword">for</span>(let <span class="keyword">index</span> = <span class="number">0</span>; <span class="keyword">index</span> &lt; <span class="keyword">array</span>.length; <span class="keyword">index</span>++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(callback(<span class="keyword">array</span>[<span class="keyword">index</span>], <span class="keyword">index</span>)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 测试</span><br><span class="line">    let totalArr = ["JayC", "ChenC", "ChenC", "LucyC", "LucyC"];</span><br><span class="line">    let selfArr1 = map(totalArr, <span class="keyword">function</span>(<span class="type">name</span>, <span class="keyword">index</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> "Hello " + <span class="type">name</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">    console.log("map() ===&gt;&gt;&gt;",selfArr1); // map() ===&gt;&gt;&gt; (<span class="number">5</span>) ["Hello Jay", "Hello Chen", "Hello Chen", "Hello Lucy", "Hello Lucy"]</span><br><span class="line">    let selfArr2 = <span class="keyword">filter</span>(totalArr, <span class="keyword">function</span>(<span class="type">name</span>, <span class="keyword">index</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="type">name</span>.indexOf("C") != <span class="number">-1</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">    console.log("filter()===&gt;&gt;&gt;", selfArr2); // <span class="keyword">filter</span>()===&gt;&gt;&gt; (<span class="number">2</span>) ["Chen", "Chen"]</span><br><span class="line">    let selfArr3 = find(totalArr, <span class="keyword">function</span>(<span class="type">name</span>, <span class="keyword">index</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="type">name</span>.indexOf("C") != <span class="number">-1</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">    let selfArr4 = find(totalArr, <span class="keyword">function</span>(<span class="type">name</span>, <span class="keyword">index</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="type">name</span>.indexOf("CC") != <span class="number">-1</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">    console.log("find()===&gt;&gt;&gt;", selfArr3, selfArr4); // find()===&gt;&gt;&gt; Chen undefined</span><br><span class="line">    let selfArr5 = findIndex(totalArr, <span class="keyword">function</span>(<span class="type">name</span>, <span class="keyword">index</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="type">name</span>.indexOf("C") != <span class="number">-1</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">    let selfArr6 = findIndex(totalArr, <span class="keyword">function</span>(<span class="type">name</span>, <span class="keyword">index</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="type">name</span>.indexOf("CC") != <span class="number">-1</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">    console.log("findIndex()===&gt;&gt;&gt;", selfArr5, selfArr6); // findIndex()===&gt;&gt;&gt; <span class="number">1</span> <span class="number">-1</span></span><br><span class="line">    let selfArr7 = every(totalArr, <span class="keyword">function</span>(<span class="type">name</span>, <span class="keyword">index</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="type">name</span>.indexOf("C") != <span class="number">-1</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">    console.log("every()===&gt;&gt;&gt;", selfArr7); // every()===&gt;&gt;&gt; <span class="keyword">true</span></span><br><span class="line">    let selfArr8 = <span class="keyword">some</span>(totalArr, <span class="keyword">function</span>(<span class="type">name</span>, <span class="keyword">index</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="type">name</span>.indexOf("C") != <span class="number">-1</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">    console.log("some()===&gt;&gt;&gt;", selfArr8); // every()===&gt;&gt;&gt; <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Chen
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.chencheng.life/2021/06/02/数组相关API/" title="数组相关API">http://www.chencheng.life/2021/06/02/数组相关API/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/自定义js函数/" rel="tag"><i class="fa fa-tag"></i> 自定义js函数</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/21/自定义apply函数/" rel="prev" title="自定义apply函数">
+      <i class="fa fa-chevron-left"></i> 自定义apply函数
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chen"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">Chen</p>
+  <div class="site-description" itemprop="description">乏善可陈 百事可乐。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/cancc" title="GitHub → https://github.com/cancc" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/0507470a5de9" title="JianShu → http://www.jianshu.com/u/0507470a5de9" rel="noopener" target="_blank"><i class="fab fa-angellist fa-fw"></i>JianShu</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">14k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">13 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
