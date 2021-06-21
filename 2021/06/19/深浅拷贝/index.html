@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="Chen">
 <meta property="og:description" content="使用到的api简介  typeof 操作符返回一个字符串，表示未经计算的操作数的类型。mdn typeof instanceof 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。mdn instanceof hasOwnProperty() 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。mdn hasOwnPropert">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-06-19T09:50:39.368Z">
+<meta property="og:updated_time" content="2021-06-21T14:25:38.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅拷贝&#x2F;深拷贝">
 <meta name="twitter:description" content="使用到的api简介  typeof 操作符返回一个字符串，表示未经计算的操作数的类型。mdn typeof instanceof 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。mdn instanceof hasOwnProperty() 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。mdn hasOwnPropert">
@@ -185,10 +185,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-06-19 23:22:55 / 修改时间：17:50:39" itemprop="dateCreated datePublished" datetime="2021-06-19T23:22:55+08:00">2021-06-19</time>
+              <time title="创建时间：2021-06-19 23:22:55" itemprop="dateCreated datePublished" datetime="2021-06-19T23:22:55+08:00">2021-06-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-21 22:25:38" itemprop="dateModified" datetime="2021-06-21T22:25:38+08:00">2021-06-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -244,10 +250,11 @@
 <blockquote>
 <p>拓展浅拷贝 – ES6</p>
 <ol>
-<li>解构赋值 语法是一种 Javascript 表达式。通过解构赋值, 可以将属性/值从对象/数组中取出,赋值给其他变量。<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">mdn 解构赋值</a></li>
+<li>解构赋值 语法是一种 Javascript 表达式。通过解构赋值, 可以将属性/值从对象/数组中取出,赋值给其他变量。<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">mdn 解构赋值</a><a id="more"></a>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">arr</span> = [<span class="string">"a"</span>, <span class="string">"b"</span>, &#123;&#125;, &#123;c:<span class="string">"1"</span>&#125;];</span><br><span class="line"><span class="keyword">let</span> <span class="attr">obj1</span> = &#123;a: <span class="number">1</span>, b:[<span class="string">"1"</span>]&#125;;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">arrCopy</span> = [...arr];</span><br><span class="line"><span class="keyword">let</span> <span class="attr">obj1Copy</span> = &#123;...obj1&#125;;</span><br><span class="line">console.log(arrCopy, obj1Copy); // [<span class="string">"a"</span>, <span class="string">"b"</span>, &#123;&#125;, &#123;c:<span class="string">"1"</span>&#125;]  &#123;a: <span class="number">1</span>, b:[<span class="string">"1"</span>]&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 </blockquote>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">arr</span> = [<span class="string">"a"</span>, <span class="string">"b"</span>, &#123;&#125;, &#123;c:<span class="string">"1"</span>&#125;];</span><br><span class="line"><span class="keyword">let</span> <span class="attr">obj1</span> = &#123;a: <span class="number">1</span>, b:[<span class="string">"1"</span>]&#125;;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">arrCopy</span> = [...arr];</span><br><span class="line"><span class="keyword">let</span> <span class="attr">obj1Copy</span> = &#123;...obj1&#125;;</span><br><span class="line">console.log(arrCopy, obj1Copy); // [<span class="string">"a"</span>, <span class="string">"b"</span>, &#123;&#125;, &#123;c:<span class="string">"1"</span>&#125;]  &#123;a: <span class="number">1</span>, b:[<span class="string">"1"</span>]&#125;</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>实现浅拷贝<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> clone1 = <span class="function"><span class="keyword">function</span>(<span class="params">target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(target != <span class="literal">null</span> &amp;&amp; <span class="keyword">typeof</span> target === <span class="string">"object"</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(target <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> [...target];</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;...target&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> self = clone1(person);</span><br><span class="line">self.occupation.info = <span class="string">"student_self"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Person"</span>,person.occupation.info); <span class="comment">// Person student_self</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"self"</span>, self.occupation.info); <span class="comment">// self student_self</span></span><br></pre></td></tr></table></figure></li>
 </ol>
