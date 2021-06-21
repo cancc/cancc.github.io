@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.chencheng.life","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"b2t":true,"scrollpercent":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="使用到的api简介  typeof 操作符返回一个字符串，表示未经计算的操作数的类型。mdn typeof instanceof 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。mdn instanceof hasOwnProperty() 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。mdn hasOwnPropert">
+<meta name="keywords" content="自定义js函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅拷贝&#x2F;深拷贝">
+<meta property="og:url" content="http://www.chencheng.life/2021/06/19/深浅拷贝/index.html">
+<meta property="og:site_name" content="Chen">
+<meta property="og:description" content="使用到的api简介  typeof 操作符返回一个字符串，表示未经计算的操作数的类型。mdn typeof instanceof 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。mdn instanceof hasOwnProperty() 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。mdn hasOwnPropert">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-06-19T09:50:39.368Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅拷贝&#x2F;深拷贝">
+<meta name="twitter:description" content="使用到的api简介  typeof 操作符返回一个字符串，表示未经计算的操作数的类型。mdn typeof instanceof 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。mdn instanceof hasOwnProperty() 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。mdn hasOwnPropert">
+
+<link rel="canonical" href="http://www.chencheng.life/2021/06/19/深浅拷贝/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>浅拷贝/深拷贝 | Chen</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Chen</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">19</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.chencheng.life/2021/06/19/深浅拷贝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="Chen">
+      <meta itemprop="description" content="乏善可陈 百事可乐。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          浅拷贝/深拷贝
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-19 23:22:55 / 修改时间：17:50:39" itemprop="dateCreated datePublished" datetime="2021-06-19T23:22:55+08:00">2021-06-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自定义js函数/" itemprop="url" rel="index"><span itemprop="name">自定义js函数</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>使用到的api简介</p>
+<ol>
+<li><code>typeof</code> 操作符返回一个字符串，表示未经计算的操作数的类型。<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof" target="_blank" rel="noopener">mdn typeof</a></li>
+<li><code>instanceof</code> 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof" target="_blank" rel="noopener">mdn instanceof</a></li>
+<li><code>hasOwnProperty()</code> 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty" target="_blank" rel="noopener">mdn hasOwnProperty()</a><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"************typeof start**************"</span>);</span><br><span class="line">  <span class="keyword">let</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">  <span class="comment">// Number</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="number">123</span>); <span class="comment">// "number"</span></span><br><span class="line">  <span class="comment">// String</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="string">"jay"</span>);  <span class="comment">// "string"</span></span><br><span class="line">  <span class="comment">// Boolean</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">true</span>); <span class="comment">// "boolean"</span></span><br><span class="line">  <span class="comment">// Function</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> test); <span class="comment">// "function"</span></span><br><span class="line">  <span class="comment">// Object</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;, <span class="keyword">typeof</span> &#123;<span class="attr">a</span>:<span class="number">1</span>&#125; === <span class="string">"object"</span>); <span class="comment">// "object" true</span></span><br><span class="line">  <span class="comment">// Array</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> [<span class="string">"jay"</span>, <span class="string">"Chen"</span>], <span class="keyword">typeof</span> [<span class="string">"jay"</span>, <span class="string">"Chen"</span>]===<span class="string">"object"</span>); <span class="comment">// "object" true</span></span><br><span class="line">  <span class="comment">// Symbol</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">Symbol</span>()); <span class="comment">// "symbol"</span></span><br><span class="line">  <span class="comment">// Undefined</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">undefined</span>); <span class="comment">// "undefined"</span></span><br><span class="line">  <span class="comment">// Null</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">null</span>); <span class="comment">// "object"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"************typeof end**************"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"************instanceof start**************"</span>);</span><br><span class="line">  <span class="comment">// instanceof 运算符用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。</span></span><br><span class="line">  <span class="built_in">console</span>.log(&#123;&#125; <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">// true</span></span><br><span class="line">  <span class="built_in">console</span>.log([] <span class="keyword">instanceof</span> <span class="built_in">Array</span>); <span class="comment">// false</span></span><br><span class="line">  <span class="built_in">console</span>.log(&#123;&#125; <span class="keyword">instanceof</span> <span class="built_in">Array</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"************instanceof end**************"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"************hasOwnProperty start**************"</span>);</span><br><span class="line">  <span class="comment">// hasOwnProperty() 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。</span></span><br><span class="line">  <span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line">  obj.word = <span class="string">"hello world"</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(obj.hasOwnProperty(<span class="string">'word'</span>)); <span class="comment">// true</span></span><br><span class="line">  <span class="built_in">console</span>.log(obj.hasOwnProperty(<span class="string">'toString'</span>)); <span class="comment">// false</span></span><br><span class="line">  <span class="built_in">console</span>.log(obj.hasOwnProperty(<span class="string">'hasOwnProperty'</span>)); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"************hasOwnProperty end**************"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>实现深/浅拷贝<br>  <figure class="highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">console.log(<span class="string">"************拷贝 start**************"</span>);</span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">  name: <span class="string">"Chen"</span>,</span><br><span class="line">  age: <span class="number">18</span>,</span><br><span class="line">  hobby: [<span class="string">"live alone"</span>, <span class="string">"listen to the music"</span>],</span><br><span class="line">  mood: <span class="string">"well-balanced"</span>,</span><br><span class="line">  Cities: [&#123;</span><br><span class="line">    city: <span class="string">"ZhengZhou"</span>,</span><br><span class="line">    year: <span class="number">2018</span></span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    city: <span class="string">"ShenZhen"</span>,</span><br><span class="line">    year: <span class="number">2019</span></span><br><span class="line">  &#125;,&#123;</span><br><span class="line">    city: <span class="string">"BeiJing"</span>,</span><br><span class="line">    year: <span class="number">2020</span>,</span><br><span class="line">  &#125;],</span><br><span class="line">  occupation: &#123;</span><br><span class="line">    info: <span class="string">"engineer"</span>,</span><br><span class="line">    action:<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      console.log(<span class="string">"live"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="keyword">clone</span> = <span class="function"><span class="keyword">function</span><span class="params">(target, isDeep=false)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(target != <span class="keyword">null</span> &amp;&amp; typeof target === <span class="string">"object"</span>) &#123;</span><br><span class="line">    <span class="comment">// 创建克隆对象(可能是&#123;&#125;或者[]) </span></span><br><span class="line">    <span class="keyword">let</span> cloneTarget = target <span class="keyword">instanceof</span> <span class="keyword">Array</span>? [] : &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">let</span> key in target) &#123;</span><br><span class="line">      <span class="keyword">if</span>(target.hasOwnProperty(key)) &#123;</span><br><span class="line">        isDeep ? cloneTarget[key] = <span class="keyword">clone</span>(target[key]) : cloneTarget[key] = target[key];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cloneTarget;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1、测试深拷贝</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">self</span> = <span class="keyword">clone</span>(person, <span class="keyword">true</span>); <span class="comment">// 深拷贝</span></span><br><span class="line"><span class="keyword">self</span>.occupation.info = <span class="string">"student_self"</span>;</span><br><span class="line">console.log(<span class="string">"Person"</span>,person.occupation.info); <span class="comment">// Person engineer</span></span><br><span class="line">console.log(<span class="string">"self"</span>, <span class="keyword">self</span>.occupation.info); <span class="comment">// self student_self</span></span><br><span class="line"><span class="comment">// 2、测试浅拷贝</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">self</span> = <span class="keyword">clone</span>(person, <span class="keyword">true</span>); <span class="comment">// 深拷贝</span></span><br><span class="line"><span class="keyword">self</span>.occupation.info = <span class="string">"student_self"</span>;</span><br><span class="line">console.log(<span class="string">"Person"</span>,person.occupation.info); <span class="comment">// Person student_self</span></span><br><span class="line">console.log(<span class="string">"self"</span>, <span class="keyword">self</span>.occupation.info); <span class="comment">// self student_self</span></span><br><span class="line">console.log(<span class="string">"************拷贝 end**************"</span>);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>拓展浅拷贝 – ES6</p>
+<ol>
+<li>解构赋值 语法是一种 Javascript 表达式。通过解构赋值, 可以将属性/值从对象/数组中取出,赋值给其他变量。<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">mdn 解构赋值</a></li>
+</ol>
+</blockquote>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">arr</span> = [<span class="string">"a"</span>, <span class="string">"b"</span>, &#123;&#125;, &#123;c:<span class="string">"1"</span>&#125;];</span><br><span class="line"><span class="keyword">let</span> <span class="attr">obj1</span> = &#123;a: <span class="number">1</span>, b:[<span class="string">"1"</span>]&#125;;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">arrCopy</span> = [...arr];</span><br><span class="line"><span class="keyword">let</span> <span class="attr">obj1Copy</span> = &#123;...obj1&#125;;</span><br><span class="line">console.log(arrCopy, obj1Copy); // [<span class="string">"a"</span>, <span class="string">"b"</span>, &#123;&#125;, &#123;c:<span class="string">"1"</span>&#125;]  &#123;a: <span class="number">1</span>, b:[<span class="string">"1"</span>]&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>实现浅拷贝<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> clone1 = <span class="function"><span class="keyword">function</span>(<span class="params">target</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(target != <span class="literal">null</span> &amp;&amp; <span class="keyword">typeof</span> target === <span class="string">"object"</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(target <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> [...target];</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;...target&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> self = clone1(person);</span><br><span class="line">self.occupation.info = <span class="string">"student_self"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"Person"</span>,person.occupation.info); <span class="comment">// Person student_self</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"self"</span>, self.occupation.info); <span class="comment">// self student_self</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Chen
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.chencheng.life/2021/06/19/深浅拷贝/" title="浅拷贝/深拷贝">http://www.chencheng.life/2021/06/19/深浅拷贝/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/自定义js函数/" rel="tag"><i class="fa fa-tag"></i> 自定义js函数</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/02/数组相关API/" rel="prev" title="数组相关API">
+      <i class="fa fa-chevron-left"></i> 数组相关API
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chen"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">Chen</p>
+  <div class="site-description" itemprop="description">乏善可陈 百事可乐。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/cancc" title="GitHub → https://github.com/cancc" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/0507470a5de9" title="JianShu → http://www.jianshu.com/u/0507470a5de9" rel="noopener" target="_blank"><i class="fab fa-angellist fa-fw"></i>JianShu</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">17k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
