@@ -20,18 +20,18 @@
     var CONFIG = {"hostname":"www.chencheng.life","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false,"b2t":true,"scrollpercent":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Function.prototype.apply() apply()方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。 mdn apply函数    自定义apply() 函数 1234567891011// apply.jsfunction apply(fn, obj, args) &amp;#123; // args --&amp;gt; 数组	// 严格模式 ES202">
+  <meta name="description" content="Function.prototype.apply()  apply()方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。 mdn apply函数   自定义apply() 函数 1234567891011// apply.jsfunction apply(fn, obj, args) &amp;#123; // args --&amp;gt; 数组	// 严格模式 ES202">
 <meta name="keywords" content="自定义js函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义apply函数">
 <meta property="og:url" content="http://www.chencheng.life/2021/04/21/自定义apply函数/index.html">
 <meta property="og:site_name" content="Chen">
-<meta property="og:description" content="Function.prototype.apply() apply()方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。 mdn apply函数    自定义apply() 函数 1234567891011// apply.jsfunction apply(fn, obj, args) &amp;#123; // args --&amp;gt; 数组	// 严格模式 ES202">
+<meta property="og:description" content="Function.prototype.apply()  apply()方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。 mdn apply函数   自定义apply() 函数 1234567891011// apply.jsfunction apply(fn, obj, args) &amp;#123; // args --&amp;gt; 数组	// 严格模式 ES202">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-06-19T09:49:49.612Z">
+<meta property="og:updated_time" content="2021-06-22T01:42:53.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义apply函数">
-<meta name="twitter:description" content="Function.prototype.apply() apply()方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。 mdn apply函数    自定义apply() 函数 1234567891011// apply.jsfunction apply(fn, obj, args) &amp;#123; // args --&amp;gt; 数组	// 严格模式 ES202">
+<meta name="twitter:description" content="Function.prototype.apply()  apply()方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。 mdn apply函数   自定义apply() 函数 1234567891011// apply.jsfunction apply(fn, obj, args) &amp;#123; // args --&amp;gt; 数组	// 严格模式 ES202">
 
 <link rel="canonical" href="http://www.chencheng.life/2021/04/21/自定义apply函数/">
 
@@ -193,7 +193,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-19 17:49:49" itemprop="dateModified" datetime="2021-06-19T17:49:49+08:00">2021-06-19</time>
+                <time title="修改时间：2021-06-22 09:42:53" itemprop="dateModified" datetime="2021-06-22T09:42:53+08:00">2021-06-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,11 +236,11 @@
 
       
         <blockquote>
-<h3 id="Function-prototype-apply"><a href="#Function-prototype-apply" class="headerlink" title="Function.prototype.apply()"></a>Function.prototype.apply()</h3><ul>
+<h3 id="Function-prototype-apply"><a href="#Function-prototype-apply" class="headerlink" title="Function.prototype.apply()"></a>Function.prototype.apply()</h3></blockquote>
+<ul>
 <li><code>apply()</code>方法调用一个具有给定this值的函数，以及以一个数组（或类数组对象）的形式提供的参数。</li>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="noopener">mdn apply函数</a></li>
 </ul>
-</blockquote>
 <blockquote>
 <h3 id="自定义apply-函数"><a href="#自定义apply-函数" class="headerlink" title="自定义apply() 函数"></a>自定义apply() 函数</h3></blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// apply.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">apply</span>(<span class="params">fn, obj, args</span>) </span>&#123; <span class="comment">// args --&gt; 数组</span></span><br><span class="line">	<span class="comment">// 严格模式 ES2020标准 globalThis 提供了一个标准的方式来获取不同环境下的全局 this  对象（也就是全局对象自身）</span></span><br><span class="line">	<span class="keyword">if</span>(obj === <span class="literal">undefined</span> || obj === <span class="literal">null</span>) &#123;</span><br><span class="line">		obj = globalThis;</span><br><span class="line">	&#125;</span><br><span class="line">	obj.temp = fn;</span><br><span class="line">	<span class="keyword">let</span> res = obj.temp(...args); <span class="comment">// 扩展运算符</span></span><br><span class="line">	<span class="keyword">delete</span> obj.temp;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
